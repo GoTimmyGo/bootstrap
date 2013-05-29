@@ -2,6 +2,9 @@
 
 define("AUTH_REALM", "Restricted area");
 
+$auth_username = "test";
+$auth_pass = "testtest";
+
 require_once('lib/RestControllerLib.php');
 require_once('lib/RestUtils.php');
 require_once('lib/RestRequest.php');
