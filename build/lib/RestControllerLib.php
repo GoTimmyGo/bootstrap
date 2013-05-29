@@ -9,8 +9,8 @@
 
 class RestControllerLib
 {
-    public static function error($a, $b)
+    public static function error($status = 200, $foo)
     {
-        return "error";
+        return $status . ' error :(';
     }
 }
