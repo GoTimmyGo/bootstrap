@@ -13,5 +13,9 @@ RewriteEngine On
 RewriteBase /andystrap
 Options +Followsymlinks
 
+RewriteCond $1 \.(php|gif|jpeg|jpg|png|css|js|swf|txt|mp3|html|xml|wav|wma|otf|ttf|JPG|ICO|ico|pdf|zip|TTF|unity3d|woff|svg|eot|htc|dcr|class)$ [OR]
+RewriteCond $1 ^()/?$
+RewriteRule ^(.*) - [L]
+
 RewriteRule ^api\/? api.php?%{query_string} [L]
 RewriteRule ^([^/]+) index.php?%{query_string} [L]

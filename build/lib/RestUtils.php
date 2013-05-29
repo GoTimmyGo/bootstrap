@@ -39,11 +39,11 @@ class RestUtils
         }
 
         // store the method
-        $return_obj->setMethod($request_method);
+        $return_obj->setVerb($request_method);
 
         // set the raw data, so we can access it if needed (there may be
         // other pieces to your requests)
-        $return_obj->setRequestVars($data);
+        $return_obj->setRequestBody($data);
 
         if(isset($data['data']))
         {
