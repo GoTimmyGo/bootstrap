@@ -1,0 +1,17 @@
+php_flag magic_quotes_gpc Off
+
+<ifmodule mod_php4.c>
+    php_value zlib.output_compression 16386
+</ifmodule>
+
+AddDefaultCharset utf-8
+
+Options All -Indexes
+
+RewriteEngine On
+
+#RewriteBase /
+Options +Followsymlinks
+
+RewriteRule ^/api/ api.php?%{query_string} [L]
+RewriteRule ^([^/]+) index.php?%{query_string} [L]
