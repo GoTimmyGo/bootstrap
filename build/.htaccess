@@ -10,8 +10,8 @@ Options All -Indexes
 
 RewriteEngine On
 
-#RewriteBase /
+RewriteBase /andystrap
 Options +Followsymlinks
 
-RewriteRule ^/api/ api.php?%{query_string} [L]
+RewriteRule ^api\/? api.php?%{query_string} [L]
 RewriteRule ^([^/]+) index.php?%{query_string} [L]
