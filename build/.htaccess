@@ -10,7 +10,7 @@ Options All -Indexes
 
 RewriteEngine On
 
-RewriteBase /andystrap
+RewriteBase /
 Options +Followsymlinks
 
 RewriteCond $1 \.(php|gif|jpeg|jpg|png|css|js|swf|txt|mp3|html|xml|wav|wma|otf|ttf|JPG|ICO|ico|pdf|zip|TTF|unity3d|woff|svg|eot|htc|dcr|class)$ [OR]

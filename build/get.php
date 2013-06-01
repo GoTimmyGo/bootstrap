@@ -1,6 +1,6 @@
 <?php
 
-$uri = "http://192.168.0.125/andystrap/api/user/1";
+$uri = "http://bootstrap.local/api/user/1";
 $response = file_get_contents($uri);
 
 header("HTTP/1.1 200 OK");

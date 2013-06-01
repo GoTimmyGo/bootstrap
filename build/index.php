@@ -5,13 +5,14 @@
         <title>Andyscript</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-        <link rel="stylesheet" href="css/bootstrap-responsive.min.css" type="text/css">
+<!--        <base href="http://localhost/bootstrap/">-->
+        <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" type="text/css">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600">
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-        <link rel="stylesheet" href="css/jquery-ui-1.10.0.custom.min.css">
-        <link rel="stylesheet" href="css/base-admin-2.css">
-        <link rel="stylesheet" href="css/base-admin-2-responsive.css">
+        <link rel="stylesheet" href="/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/jquery-ui-1.10.0.custom.min.css">
+        <link rel="stylesheet" href="/css/base-admin-2.css">
+        <link rel="stylesheet" href="/css/base-admin-2-responsive.css">
     </head>
     <body>
         <div class="navbar navbar-inverse navbar-fixed-top">
@@ -49,6 +50,9 @@
                                 </ul>
                             </li>
                         </ul>
+                        <form class="navbar-search pull-right">
+                            <input type="text" class="search-query" name="q" placeholder="Search">
+                        </form>
                     </div>
                 </div>
             </div>
@@ -62,17 +66,106 @@
                     <div class="subnav-collapse collapse">
                         <ul class="mainnav">
                             <li class="active">
-                                <a href="index.php">
+                                <a href="/">
                                     <i class="icon-home"></i>
                                     <span>Home</span>
                                 </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="icon-group"></i>
+                                    <span>Users</span>
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="/users/list/">List users</a>
+                                    </li>
+                                    <li>
+                                        <a href="/users/add/">Add a user</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="icon-list-alt"></i>
+                                    <span>News</span>
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="/news/list/">List news articles</a>
+                                    </li>
+                                    <li>
+                                        <a href="/news/add/">Add a news article</a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="http://code.jquery.com/jquery.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <div class="main">
+            <div class="container">
+                <div class="row">
+                    <div class="span6">
+                        <div class="widget stacked">
+                            <div class="widget-header">
+                                <i class="icon-signal"></i>
+                                <h3>Active Subscriptions</h3>
+                            </div>
+                            <div class="widget-content">
+                                <div id="subscriptionChart" class="chart-holder"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span6">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="extra">
+
+        </div>
+        <div class="footer">
+
+        </div>
+        <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+        <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/js/jquery.flot.min.js"></script>
+        <script type="text/javascript" src="/js/jquery.flot.pie.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function()
+            {
+                var data = [
+                    { label: "Student / Unwaged",  data: 15 },
+                    { label: "Full (Tier 1)",  data: 26 },
+                    { label: "Full (Tier 2)",  data: 7 },
+                    { label: "Full (Tier 3)",  data: 20 },
+                    { label: "Honorary",  data: 22 },
+                    { label: "Honorary (no JF)",  data: 9 }
+                ];
+
+                var options =
+                {
+                    colors: ["#d18b2c", "#dba255", "#919733"]
+                };
+
+                $.plot($("#subscriptionChart"), data,
+                    {
+                        series:
+                        {
+                            pie:
+                            {
+                                show: true
+                            }
+                        },
+                        colors: ["#f90", "#FFB529"]
+                    });
+            });
+        </script>
     </body>
 </html>
