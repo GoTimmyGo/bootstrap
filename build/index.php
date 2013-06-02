@@ -157,12 +157,13 @@
             $(document).ready(function()
             {
                 var data = [
-                    { label: "Student / Unwaged",  data: 15 },
-                    { label: "Full (Tier 1)",  data: 26 },
-                    { label: "Full (Tier 2)",  data: 7 },
-                    { label: "Full (Tier 3)",  data: 20 },
+                    { label: "Student", data: 79 },
+                    { label: "Student / Unwaged", data: 15 },
+                    { label: "Full (Tier 1)", data: 26 },
+                    { label: "Full (Tier 2)", data: 7 },
+                    { label: "Full (Tier 3)", data: 20 },
                     { label: "Honorary",  data: 22 },
-                    { label: "Honorary (no JF)",  data: 9 }
+                    { label: "Honorary (no JF)", data: 9 }
                 ];
 
                 $.plot($("#donut-chart"), data,
@@ -180,7 +181,7 @@
                                 show: true,
                                 formatter: function (label, series)
                                 {
-                                    return '<div style="text-align: center;">' + series.data[0][1] + '<br>' + Math.round(series.percent) + '%</div>';
+                                    return '<div style="text-align: center;">' + series.data[0][1] + ' : ' + Math.round(series.percent) + '%</div>';
                                 }
                             }
                         }
