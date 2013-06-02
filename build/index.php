@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="/css/jquery-ui-1.10.0.custom.min.css">
         <link rel="stylesheet" href="/css/base-admin-2.css">
         <link rel="stylesheet" href="/css/base-admin-2-responsive.css">
+        <link rel="stylesheet" href="/css/dashboard.css">
     </head>
     <body>
         <div class="navbar navbar-inverse navbar-fixed-top">
@@ -113,16 +114,30 @@
                         <div class="widget stacked">
                             <div class="widget-header">
                                 <i class="icon-signal"></i>
-                                <h3>Active Subscriptions</h3>
+                                <h3>Active Membership Breakdown</h3>
                             </div>
                             <div class="widget-content">
-                                <div id="subscriptionChart" class="chart-holder"></div>
+                                <div class="stats">
+                                    <div class="stat">
+                                        <div id="donut-chart" class="chart-holder"></div>
+                                    </div>
+                                    <!--<div class="stat">
 
+                                    </div>-->
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="span6">
+                        <div class="widget stacked">
+                            <div class="widget-header">
+                                <i class="icon-money"></i>
+                                <h3>Membership Prices</h3>
+                            </div>
+                            <div class="widget-content">
 
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -137,6 +152,7 @@
         <script type="text/javascript" src="/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="/js/jquery.flot.min.js"></script>
         <script type="text/javascript" src="/js/jquery.flot.pie.min.js"></script>
+        <script type="text/javascript" src="/js/jquery.flot.resize.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function()
             {
@@ -149,22 +165,32 @@
                     { label: "Honorary (no JF)",  data: 9 }
                 ];
 
-                var options =
+                $.plot($("#donut-chart"), data,
                 {
-                    colors: ["#d18b2c", "#dba255", "#919733"]
-                };
 
-                $.plot($("#subscriptionChart"), data,
+                    //colors: ["#F90", "#222", "#777", "#AAA"],
+                    series:
                     {
-                        series:
+                        pie:
                         {
-                            pie:
+                            innerRadius: 0.35,
+                            show: true,
+                            label:
                             {
-                                show: true
+                                show: true,
+                                formatter: function (label, series)
+                                {
+                                    return '<div style="text-align: center;">' + series.data[0][1] + '<br>' + Math.round(series.percent) + '%</div>';
+                                }
                             }
-                        },
-                        colors: ["#f90", "#FFB529"]
-                    });
+                        }
+                    }/*,
+                    legend:
+                    {
+                        show: false
+                    },
+                    colors: ["#f90", "#FFB529"]*/
+                });
             });
         </script>
     </body>
